@@ -21,9 +21,10 @@ pipeline {
 
         stage ('API Test') {
             steps {
-                dir('api-test')
-                git branch: 'main', credentialsId: '57beac03-4ee4-424b-89f5-c801e3265238', url: 'https://github.com/danielsilvalima1996/tasks-api-test'
-                sh 'mvn test'
+                dir('api-test') {
+                    git branch: 'main', credentialsId: '57beac03-4ee4-424b-89f5-c801e3265238', url: 'https://github.com/danielsilvalima1996/tasks-api-test'
+                    sh 'mvn test'
+                }
             }
         }
     }
