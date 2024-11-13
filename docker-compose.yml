@@ -34,7 +34,7 @@ services:
       - DATABASE_PORT=5432
       - DATABASE_USER=sonar
       - DATABASE_PASSWD=sonar
-      #- DATABASE_UPDATE=none
+      - DATABASE_UPDATE=none
     depends_on:
       - db
 
