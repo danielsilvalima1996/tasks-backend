@@ -37,5 +37,14 @@ pipeline {
                 }
             }
         }
+
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
+                    git branch: 'main', credentialsId: '57beac03-4ee4-424b-89f5-c801e3265238', url: 'https://github.com/danielsilvalima1996/tasks-functional-test'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
