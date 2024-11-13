@@ -27,5 +27,15 @@ pipeline {
                 }
             }
         }
+
+        stage ('Deploy Frontend') {
+            steps {
+                dir('frontend') {
+                    git branch: 'master', credentialsId: '57beac03-4ee4-424b-89f5-c801e3265238', url: 'https://github.com/danielsilvalima1996/tasks-frontend'
+                    sh 'mvn clean package'
+                    deploy adapters: [tomcat8(credentialsId: '60aa6c92-4ea5-4450-becd-b3454d017806', path: '', url: 'http://localhost:8001')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+            }
+        }
     }
 }
