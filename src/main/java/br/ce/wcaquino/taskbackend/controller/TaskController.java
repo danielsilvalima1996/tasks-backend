@@ -45,7 +45,7 @@ public class TaskController {
 		return new ResponseEntity<Task>(saved, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable(value = "id") Long id) throws ValidationException {
 		if(id == null) {
 			throw new ValidationException("Fill the task id");
